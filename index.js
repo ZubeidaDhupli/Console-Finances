@@ -119,3 +119,27 @@ console.log(totalChange);
 averageChange = totalChange/finances.length;
 
 console.log("Average Change: $" + averageChange);
+
+// Logs the greatest increase in profits over the entire period. //
+
+let greatestIncrease = finances[0];
+
+for (let k = 0; k < finances.length; k++) {
+  if (greatestIncrease < finances[k] ) {
+      greatestIncrease = finances[k];
+  }
+}
+
+console.log("Greatest Increase in Profits: " + greatestIncrease);
+
+// Logs the greatest decrease in profits over the entire period. //
+
+let greatestDecrease = finances[0];
+
+for (let l = 0; l < finances.length; l++) {
+  if (greatestDecrease > finances[k] ) {
+      greatestDecrease = finances[k];
+  }
+}
+
+console.log("Greatest Derease in Profits: " + greatestDecrease); 
