@@ -107,16 +107,20 @@ console.log("Total: $" + netProfit);
 
 // Calculates the average of the changes in Profit/Losses over the entire period //
 
+let change = [];
 let totalChange = 0;
 let averageChange = 0;
 
 for (let j = 0; j < finances.length; j++) {
-  totalChange += finances[j+1][1] - finances[j][1];
+  change += finances[j][1] - finances[j-1][1];
 }
 
-console.log(totalChange);
+for (let x = 0; x < change.length; x++) {
+  totalChange += change[x];
+}
 
-averageChange = totalChange/finances.length;
+
+averageChange = totalChange/finances.length - 1;
 
 console.log("Average Change: $" + averageChange);
 
