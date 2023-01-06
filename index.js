@@ -89,11 +89,11 @@ let finances = [
 
 // Logs the title Financial Analysis //
 
-console.log("Financial Analysis");
+console.log('Financial Analysis');
 
 // Logs the total number of months included in the dataset //
 
-console.log("Total Months: " + finances.length);
+console.log('Total Months: ' + finances.length);
 
 // Calculates the net total amount of Profit/Losses over the entire period //
 
@@ -103,47 +103,46 @@ for (let i = 0; i < finances.length; i++) {
   netProfit = netProfit + finances[i][1];
 }
 
-console.log("Total: $" + netProfit);
+console.log('Total: $' + netProfit);
 
 // Calculates the average of the changes in Profit/Losses over the entire period //
 
-let change = [];
+let changes = [];
 let totalChange = 0;
-let averageChange = 0;
 
-for (let j = 0; j < finances.length; j++) {
-  change += finances[j][1] - finances[j-1][1];
+for (let j = 1; j < finances.length; j++) {
+  let change = finances[j][1] - finances[j - 1][1];
+  changes.push(change);
 }
 
-for (let x = 0; x < change.length; x++) {
-  totalChange += change[x];
+for (let x = 0; x < changes.length; x++) {
+  totalChange += changes[x];
 }
 
+averageChange = totalChange / (finances.length - 1);
 
-averageChange = totalChange/finances.length - 1;
-
-console.log("Average Change: $" + averageChange);
+console.log('Average Change: $' + averageChange);
 
 // Logs the greatest increase in profits over the entire period. //
 
 let greatestIncrease = finances[0];
 
 for (let k = 0; k < finances.length; k++) {
-  if (greatestIncrease < finances[k] ) {
-      greatestIncrease = finances[k];
+  if (greatestIncrease < finances[k]) {
+    greatestIncrease = finances[k];
   }
 }
 
-console.log("Greatest Increase in Profits: " + greatestIncrease);
+console.log('Greatest Increase in Profits: ' + greatestIncrease);
 
 // Logs the greatest decrease in profits over the entire period. //
 
 let greatestDecrease = finances[0];
 
 for (let l = 0; l < finances.length; l++) {
-  if (greatestDecrease > finances[k] ) {
-      greatestDecrease = finances[k];
+  if (greatestDecrease > finances[l]) {
+    greatestDecrease = finances[l];
   }
 }
 
-console.log("Greatest Derease in Profits: " + greatestDecrease); 
+console.log('Greatest Derease in Profits: ' + greatestDecrease);
