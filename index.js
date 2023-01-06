@@ -1,4 +1,4 @@
-var finances = [
+let finances = [
   ['Jan-2010', 867884],
   ['Feb-2010', 984655],
   ['Mar-2010', 322013],
@@ -86,3 +86,22 @@ var finances = [
   ['Jan-2017', 138230],
   ['Feb-2017', 671099],
 ];
+
+// Logs the title Financial Analysis //
+
+console.log("Financial Analysis");
+
+// Logs the total number of months included in the dataset //
+
+console.log("Total Months: " + finances.length);
+
+// Calculates the net total amount of Profit/Losses over the entire period //
+
+let netProfit = 0;
+
+for (let i = 0; i < finances.length; i++) {
+  netProfit = netProfit + finances[i][1];
+}
+
+console.log("Total: " + netProfit);
+
