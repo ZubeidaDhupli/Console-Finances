@@ -110,39 +110,62 @@ console.log('Total: $' + netProfit);
 let changes = [];
 let totalChange = 0;
 
-for (let j = 1; j < finances.length; j++) {
-  let change = finances[j][1] - finances[j - 1][1];
+for (let i = 1; i < finances.length; i++) {
+  let change = finances[i][1] - finances[i - 1][1];
   changes.push(change);
 }
 
-for (let x = 0; x < changes.length; x++) {
-  totalChange += changes[x];
+// to sum items in the changes array
+for (let i = 0; i < changes.length; i++) {
+  totalChange += changes[i];
 }
 
 averageChange = totalChange / (finances.length - 1);
 
-console.log('Average Change: $' + averageChange);
+console.log('Average Change: $' + averageChange.toFixed(2));
 
 // Logs the greatest increase in profits over the entire period. //
 
-let greatestIncrease = finances[0];
+// We are going to use the array 'changes'(Profit/Loss differences) to get the values of highest and lowest number in that array
+// https://stackoverflow.com/questions/28467744/how-does-the-reduce-function-work-with-math-max-in-javascript
+// Reduce method splits array into values we can do things with, like get the index of element in the main finance array to display the month
+let greatestIncrease = changes.reduce((acc, value) => Math.max(acc, value));
 
-for (let k = 0; k < finances.length; k++) {
-  if (greatestIncrease < finances[k]) {
-    greatestIncrease = finances[k];
-  }
-}
+// Your method
+// let greatestIncrease = changes[0];
+// for (let i = 0; i < changes.length; i++) {
+//   if (greatestIncrease < changes[i]) {
+//     greatestIncrease = changes[i];
+//   }
+// }
 
-console.log('Greatest Increase in Profits: ' + greatestIncrease);
+// to get the month, we need to get the index in the changes array
+// +1 because we started the change array loop from the second month with index 1, so we need to increment the index in finance array to get accurate result.
+// indexOf is a simple method of getting the array[index].
+let greatestIncreaseMonthIndex = changes.indexOf(greatestIncrease) + 1;
+// reference the element in the finance array at the index of a highest difference recorded, and then call out the first element(string/month) of the inner array
+let greatestIncreaseMonth = finances[greatestIncreaseMonthIndex][0];
+
+// prettier formats it very sparce lol
+// check out alternative method for string print src: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals
+console.log(
+  'Greatest Increase in Profits: ' +
+    greatestIncreaseMonth +
+    '( $' +
+    greatestIncrease +
+    ')'
+);
 
 // Logs the greatest decrease in profits over the entire period. //
+// We do the same here, as with the greatestIncrease, but this time we are using the Math.min
+let greatestDecrease = changes.reduce((acc, value) => Math.min(acc, value));
+let greatestDecreaseMonthIndex = changes.indexOf(greatestDecrease) + 1;
+let greatestDecreaseMonth = finances[greatestDecreaseMonthIndex][0];
 
-let greatestDecrease = finances[0];
-
-for (let l = 0; l < finances.length; l++) {
-  if (greatestDecrease > finances[l]) {
-    greatestDecrease = finances[l];
-  }
-}
-
-console.log('Greatest Derease in Profits: ' + greatestDecrease);
+console.log(
+  'Greatest Increase in Profits: ' +
+    greatestDecreaseMonth +
+    '( $' +
+    greatestDecrease +
+    ')'
+);
