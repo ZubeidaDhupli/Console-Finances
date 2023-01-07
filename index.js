@@ -154,7 +154,7 @@ let greatestIncreaseMonth = finances[greatestIncreaseMonthIndex][0];
 console.log(
   'Greatest Increase in Profits: ' +
     greatestIncreaseMonth +
-    '( $' +
+    '($' +
     greatestIncrease +
     ')'
 );
@@ -168,7 +168,7 @@ let greatestDecreaseMonth = finances[greatestDecreaseMonthIndex][0];
 console.log(
   'Greatest Increase in Profits: ' +
     greatestDecreaseMonth +
-    '( $' +
+    '($' +
     greatestDecrease +
     ')'
 );
