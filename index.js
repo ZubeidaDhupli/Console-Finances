@@ -107,43 +107,39 @@ console.log("Total: $" + netProfit);
 
 // Calculates the average of the changes in Profit/Losses over the entire period //
 
-let change = [];
+let changes = [];
 let totalChange = 0;
-let averageChange = 0;
 
-for (let j = 0; j < finances.length; j++) {
-  change += finances[j][1] - finances[j-1][1];
+for (let i = 1; i < finances.length; i++) {
+  let change = finances[i][1] - finances[i - 1][1];
+  changes.push(change);
 }
 
-for (let x = 0; x < change.length; x++) {
-  totalChange += change[x];
+for (let i = 0; i < changes.length; i++) {
+  totalChange += changes[i];
 }
 
 
-averageChange = totalChange/finances.length - 1;
+averageChange = totalChange/(finances.length - 1);
 
-console.log("Average Change: $" + averageChange);
+console.log("Average Change: $" + averageChange.toFixed(2));
 
 // Logs the greatest increase in profits over the entire period. //
 
-let greatestIncrease = finances[0];
+let greatestIncrease = changes.reduce((acc,value) => Math.max(acc,value));
 
-for (let k = 0; k < finances.length; k++) {
-  if (greatestIncrease < finances[k] ) {
-      greatestIncrease = finances[k];
-  }
-}
+let greatestIncreaseMonthIndex = changes.indexOf(greatestIncrease) + 1;
 
-console.log("Greatest Increase in Profits: " + greatestIncrease);
+let greatestIncreaseMonth = finances[greatestIncreaseMonthIndex][0];
+
+console.log("Greatest Increase in Profits: " + greatestIncreaseMonth + "($" + greatestIncrease + ")");
 
 // Logs the greatest decrease in profits over the entire period. //
 
-let greatestDecrease = finances[0];
+let greatestDecrease= changes.reduce((acc,value) => Math.min(acc,value));
 
-for (let l = 0; l < finances.length; l++) {
-  if (greatestDecrease > finances[k] ) {
-      greatestDecrease = finances[k];
-  }
-}
+let greatestDecreaseMonthIndex = changes.indexOf(greatestDecrease) + 1;
 
-console.log("Greatest Derease in Profits: " + greatestDecrease); 
+let greatestDecreaseMonth = finances[greatestDecreaseMonthIndex][0];
+
+console.log("Greatest Decrease in Profits: " + greatestDecreaseMonth + "($" + greatestDecrease + ")");
