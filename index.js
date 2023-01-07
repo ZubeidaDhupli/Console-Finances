@@ -110,8 +110,11 @@ console.log('Total: $' + netProfit);
 let changes = [];
 let totalChange = 0;
 
+// creating new array 'changes' allows us to get values of differences between months to easily sum them, get max and min value and anything else.
 for (let i = 1; i < finances.length; i++) {
+  // for the first loop it would look like finances[1][1] - finances[1-1][1], we reduce the index (-1) so that we can substract from previous month which would be at previous index
   let change = finances[i][1] - finances[i - 1][1];
+  // .push method allows to add element to the end of the array 'changes'
   changes.push(change);
 }
 
