@@ -10,7 +10,7 @@ N/A
 
 ## Usage
 
-To use the financial analysis tool, you would use this link: https://zubeidadhupli.github.io/Console-Finances/ . If you open the DevTools console, using Command+Option+I for macOS or Control+Shift+I for Windows, you will find the JavaScript running and the result analysis will be displayed. Here is a screenshot of the result ananlysis in the console: ![image of result ananlysis][image/result-analysis.png] .
+To use the financial analysis tool, you would use this link: https://zubeidadhupli.github.io/Console-Finances/ . If you open the DevTools console, using Command+Option+I for macOS or Control+Shift+I for Windows, you will find the JavaScript running and the result analysis will be displayed. Here is a screenshot of the result ananlysis in the console: ![image of result ananlysis](image/result-analysis.png) .
 
 ## Credits
 
